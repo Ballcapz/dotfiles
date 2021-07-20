@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Zach Johnson
+	email = zlg23johnson@gmail.com
+# Please adapt and uncomment the following lines:
+#	name = Zach Johnson
+#	email = zach@Zachs-MacBook-Pro.local
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = false
+[alias]
+	co = checkout
+	a = add
+	st = status
+	br = branch
+	unstage = reset HEAD --
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = /Users/zach/.gitignore

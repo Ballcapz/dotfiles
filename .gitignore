@@ -1,0 +1,11 @@
+.vscode/local.*
+.vscode/*.local.*
+.vscode/local/*
+
+.DS_Store
+.idea/
+log/
+*.log
+
+npm-debug.log
+
