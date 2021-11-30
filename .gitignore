@@ -1,6 +1,7 @@
 .vscode/local.*
 .vscode/*.local.*
 .vscode/local/*
+.vscode/*
 
 .DS_Store
 .idea/
@@ -8,4 +9,4 @@ log/
 *.log
 
 npm-debug.log
-
+*.tfvars

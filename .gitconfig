@@ -2,9 +2,6 @@
 [user]
 	name = Zach Johnson
 	email = zlg23johnson@gmail.com
-# Please adapt and uncomment the following lines:
-#	name = Zach Johnson
-#	email = zach@Zachs-MacBook-Pro.local
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -23,3 +20,9 @@
 	defaultBranch = main
 [core]
 	excludesfile = /Users/zach/.gitignore
+[diff]
+    tool = vscode
+[diftool "vscode"]
+    cmd = code --wait --dif $LOCAL $REMOTE
+[fetch]
+    recurseSubmodules = on-demand

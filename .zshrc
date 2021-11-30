@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,16 +104,18 @@ FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
 
 export PATH="/Users/zach/dev/playground/v:$PATH"
 export PATH="/Users/zach/dev/scripts:$PATH"
+export PATH="/Users/zach/.cargo/bin:$PATH"
 
-alias drm="docker-rm.sh"
-alias ddev="docker-compose up --scale api=0 --scale web=0"
+alias drm="~/scripts/docker-rm.sh"
+alias ddev="docker-compose up --scale api=0"
 alias ntw="npm run test -- --watch"
 alias nt="npm run test"
 alias nd="npm run dev"
 alias nda="node ../.vscode/local.debug-logger.js && npm run dev"
 alias c="code ."
 alias ci="code-insiders ."
-alias vi="nvim "
+alias vi="vim "
+alias pjs="~/scripts/pjs.sh"
 
 alias gc="git checkout "
 alias gcb="git checkout -b "
@@ -122,16 +124,43 @@ alias gm="git commit -m "
 alias gcam="git commit -am "
 alias gst="git status"
 alias ltd="load-test-data.bash"
+alias k="kubectl"
+alias gcl="gcloud"
+alias python="python3"
+
 
 
 export EDITOR=vim
 
 
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+# nvm completions
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+# Set node version
+nvm use 14
 
-nvm use 14.13
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/zach/Documents/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zach/Documents/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/zach/Documents/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zach/Documents/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+
+
+
+PATH="/Users/zach/.local/share/solana/install/active_release/bin:$PATH"
+
+# opam configuration
+[[ ! -r /Users/zach/.opam/opam-init/init.zsh ]] || source /Users/zach/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 
